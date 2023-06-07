@@ -1,5 +1,6 @@
 package com.example.springboottutorial.controller;
 
+import com.example.springboottutorial.entity.Person;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -7,7 +8,7 @@ public class Hello {
     @GetMapping(value = {"","/","/Tanuja"})
     public String helloWorld(){return "Hello From BridgeLabz";}
 
-    @RequestMapping(value = {"/query"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/param"}, method = RequestMethod.GET)
     public String sayHello(@RequestParam(value = "name") String name) {
         return "Hello "+ name + "!";
     }
@@ -18,9 +19,9 @@ public class Hello {
     }
 
     @PostMapping("/post-name")
-    public String sayHello(@RequestBody User user) {
-        User user1 =new User();
-        return "Hello "+user1.getFirstName()+" "+user1.getLastName();
+    public String sayHello(@RequestBody Person person) {
+
+        return "Hello "+person.getFirstName()+" "+person.getLastName();
     }
     @PutMapping("/put/{firstName}")
     public String sayHello(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
